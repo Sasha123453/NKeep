@@ -1,0 +1,19 @@
+﻿@model NoteViewModel
+@{
+	ViewData["Title"] = "Home Page";
+	var vm = Model;
+}
+<form method="post" asp-controller="Notes" asp-action="EditNote">
+	<table>
+		<tr>
+			<td><input id="Id" type="hidden" name="Id" value="@vm.Id"/> </td>
+			<td><p>Заголовок</p></td>
+			<td><input id="Title" type="text" name="Title" value="@vm.Title"/> </td>
+		</tr>
+		<tr>
+			<td><p>Текст</p></td>
+			<td><input id="Text" type="text" name="Text" value="@vm.Text"/> </td>
+		</tr>
+	</table>
+	<input type="submit" value="Подтвердить" />
+</form>

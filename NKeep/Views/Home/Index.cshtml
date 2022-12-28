@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Note>
+@{
+	ViewData["Title"] = "Home Page";
+	var notes = Model;
+}
+
+<div class="text-center">
+	@if (User.Identity.IsAuthenticated)
+	{
+		<h1 class="display-4">Добро пожаловать @User.Identity.Name</h1>
+		<a asp-controller="Notes" asp-action="Index">Добавить заметку</a>
+		@if (notes != null)
+		{
+			@foreach (var note in notes)
+			{
+			    <h1 class="display-4">@note.Title</h1>
+		        <a asp-route-id="@note.Id" asp-controller="Notes" asp-action="EditNote">Изменить заметку</a>
+			}
+		}
+	}
+	else
+	{
+	    <h1 class="display-4">Авторизуйтесь, чтобы увидеть свои заметки</h1>
+	}
+</div>
